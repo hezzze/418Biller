@@ -1,0 +1,12 @@
+.hero {
+	float: left;
+	margin: 10px;
+	background-color: #dfdfdf;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+section {
+	margin:10px;
+	overflow: auto;
+}
