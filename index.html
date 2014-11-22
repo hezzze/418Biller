@@ -2,35 +2,45 @@
 <html ng-app="billCalculator">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="">
     <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
 </head>
 
 <body ng-controller="HeroesCtrl">
 
-	<h1>418 分赃工具 1.0</h1>
-
-    <section>
-        <form ng-submit="add_hero()">
-            <input required id="hero_name" type="text" ng-model="heroName"></input>
-            <button type="submit">Add Hero</button>
+    <div class="container">
+        <center>
+            <h1><i class="glyphicon glyphicon-usd"></i>418 分赃工具 1.1</h1>
+        </center>
+        <h4 id="result">Result</h4>
+        <pre ng-show='result'>{{result}}</pre>
+        <hr>
+        <h4>Heroes</h4>
+        <form name="billForm" class="form-inline" role="form">
+            <div class="form-group hz-form-group" ng-repeat="hero in heroes">
+                <label><i>{{hero.name}}</i> Paid:
+                    <a tabindex="-1" class="btn btn-xs btn-default" ng-click="delete_hero($index)">&times;</a>
+                </label>
+                <input required class="form-control hz-form-control" type="number" ng-model="hero.val">
+            </div>
+            <button class="btn btn-primary" type="submit" ng-click="calc()">算账！</button>
         </form>
-    </section>
-
-    <section>
-        <div class="hero" ng-repeat="hero in heroes">
-            <p>Name: {{hero.name}}
-                <button ng-click="delete_hero($index)">&times;</button>
-            </p>
-            <input type="number" ng-model="hero.val"></input>
-        </div>
-    </section>
-
-    <section>
-        <button ng-click="calc()">算账！</button>
-        <pre>{{result}}</pre>
-    </section>
+        <form class="form-inline" role="form" ng-submit="add_hero()">
+            <div class="form-group">
+                <input class="form-control" required id="hero_name" type="text" ng-model="heroName"></input>
+            </div>
+            <button class="btn btn-default" type="submit">Add Hero</button>
+        </form>
+    </div>
 
 </body>
 

@@ -46,15 +46,15 @@
     function yeah(neg, nonneg) {
         if (neg.length === 1) {
             for (var i = 0; i < nonneg.length; i++) {
-                neg[0].to += "=> " + nonneg[i].name + ":" + nonneg[i].val + " ";
+                neg[0].to += "=> " + nonneg[i].name + ": $" + nonneg[i].val + "  ";
             }
         } else {
             if (-neg[0].val < nonneg[0].val) {
-                neg[0].to += "=> " + nonneg[0].name + ":" + -neg[0].val + " ";
+                neg[0].to += "=> " + nonneg[0].name + ": $" + -neg[0].val + "  ";
                 nonneg[0].val += neg[0].val;
                 yeah(neg.slice(1, neg.length), nonneg);
             } else {
-                neg[0].to += "=> " + nonneg[0].name + ":" + nonneg[0].val + " ";
+                neg[0].to += "=> " + nonneg[0].name + ": $" + nonneg[0].val + "  ";
                 neg[0].val += nonneg[0].val;
                 if (neg[0].val === 0) {
                     yeah(neg.slice(1, neg.length), nonneg.slice(1, nonneg.length));
@@ -65,8 +65,14 @@
         }
     }
 
+    $(function() {
+        $('input').click(function() {
+            this.select();
+        });
+    });
+
     //default 
-    var HEROES = ["Kaiwen", "Siyuan", "Pin", "Heze"];
+    var HEROES = ["Kaiwen", "Zhiyuan", "Pin", "Heze"];
 
     /**
      * billCalculator Module
@@ -97,6 +103,9 @@
             };
 
             $scope.calc = function() {
+                if (!$scope.billForm.$valid) {
+                    return;
+                }
                 var neg = bill(angular.copy($scope.heroes));
                 var r = "";
                 if (neg.length === 0) {
@@ -110,6 +119,7 @@
                     }
                 }
                 $scope.result = r;
+                window.location.href = window.location.href + "#result";
             };
         }
     ])
