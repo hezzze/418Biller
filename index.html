@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -19,7 +20,7 @@
 
     <div class="container">
         <center>
-            <h1><i class="glyphicon glyphicon-usd"></i>418 分赃工具 1.1</h1>
+            <h1><i class="glyphicon glyphicon-usd"></i>418 分赃工具 1.11</h1>
         </center>
         <h4 id="result">Result</h4>
         <pre ng-show='result'>{{result}}</pre>
@@ -27,10 +28,10 @@
         <h4>Heroes</h4>
         <form name="billForm" class="form-inline" role="form">
             <div class="form-group hz-form-group" ng-repeat="hero in heroes">
-                <label><i>{{hero.name}}</i> Paid:
+                <label>{{hero.name}} 付了:
                     <a tabindex="-1" class="btn btn-xs btn-default" ng-click="delete_hero($index)">&times;</a>
                 </label>
-                <input required class="form-control hz-form-control" type="number" ng-model="hero.val">
+                <input required class="form-control hz-form-control" type="number" step="any" ng-model="hero.val">
             </div>
             <button class="btn btn-primary" type="submit" ng-click="calc()">算账！</button>
         </form>

@@ -72,7 +72,7 @@
     });
 
     //default 
-    var HEROES = ["Kaiwen", "Zhiyuan", "Pin", "Heze"];
+    var HEROES = ["小熊猫", "小眼仔", "品叔", "贺泽"];
 
     /**
      * billCalculator Module
@@ -104,6 +104,8 @@
 
             $scope.calc = function() {
                 if (!$scope.billForm.$valid) {
+                    $scope.result = "你输入的这是啥呀？。。"
+                    window.location.href = window.location.href + "#result";
                     return;
                 }
                 var neg = bill(angular.copy($scope.heroes));
@@ -115,7 +117,7 @@
                     console.log("要算账了！！！shit!");
                     for (var l = 0; l < neg.length; l++) {
                         r += neg[l].name + " send\n" + neg[l].to + "\n\n";
-                        console.log(neg[l].name + " should give: " + neg[l].to);
+                        console.log(neg[l].name + " 应该给: " + neg[l].to);
                     }
                 }
                 $scope.result = r;
