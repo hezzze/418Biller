@@ -1,0 +1,24 @@
+<div class="container">
+    <center>
+        <h1><i class="glyphicon glyphicon-usd"></i>418 Bill Calculator 1.1.1</h1>
+    </center>
+    <h4 id="result">Result</h4>
+    <pre [hidden]="!result">{{result}}</pre>
+    <hr>
+    <h4>Heroes</h4>
+    <form name="billForm" #billForm="ngForm" class="form-inline" role="form">
+        <div class="form-group hz-form-group" *ngFor="let hero of heroes">
+            <label>{{hero.name}} paid:
+                <a tabindex="-1" class="btn btn-xs btn-default" (click)="deleteHero(index)">&times;</a>
+            </label>
+            <input required class="form-control hz-form-control" type="number" step="any" [(ngModel)]="hero.val" name="val{{index}}">
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="calc(billForm)">calculate！</button>
+    </form>
+    <form class="form-inline" (ngSubmit)="addHero()" role="form">
+        <div class="form-group">
+            <input class="form-control" required id="hero_name" type="text" [(ngModel)]="heroName" name="heroName">
+        </div>
+        <button class="btn btn-default" type="submit">Add Hero</button>
+    </form>
+</div>
