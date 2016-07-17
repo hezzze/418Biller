@@ -3,3 +3,5 @@ Used for calculating shared bills among friends, enter amount paid by each perso
 
 ### Tech stack
 Angular 2 + TypeScript + Webpack
+
+Webpack setup: https://angular.io/docs/ts/latest/guide/webpack.html
